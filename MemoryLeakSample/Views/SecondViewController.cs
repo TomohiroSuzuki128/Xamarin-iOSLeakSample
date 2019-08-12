@@ -2,7 +2,7 @@
 
 namespace MemoryLeakSample.Views
 {
-    public partial class MainViewController : UIViewController
+    public partial class SecondViewController : UIViewController
     {
 
         public override void ViewDidLoad()

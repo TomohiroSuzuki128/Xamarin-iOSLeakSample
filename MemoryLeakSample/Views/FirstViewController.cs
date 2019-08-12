@@ -1,8 +1,9 @@
-﻿using UIKit;
+﻿using Foundation;
+using UIKit;
 
 namespace MemoryLeakSample.Views
 {
-    public partial class MainViewController : UIViewController
+    public partial class FirstViewController : UIViewController
     {
 
         public override void ViewDidLoad()
@@ -11,22 +12,13 @@ namespace MemoryLeakSample.Views
 
             InitializeUI();
 
-            button.TouchUpInside += (s, e) => PresentAlert("Alert");
-
-            //button.AddTarget(this, new ObjCRuntime.Selector("buttonEvent:"), UIControlEvent.TouchUpInside);
+            nextViewButton.AddTarget(this, new ObjCRuntime.Selector("nextViewButtonEvent:"), UIControlEvent.TouchUpInside);
         }
 
-        //[Export("buttonEvent:")]
-        //void ButtonEvent(NSObject sender)
-        //{
-        //    PresentAlert("Alert");
-        //}
-
-        void PresentAlert(string message)
+        [Export("nextViewButtonEvent:")]
+        void NextViewButtonEvent(NSObject sender)
         {
-            var alertController = UIAlertController.Create(string.Empty, message, UIAlertControllerStyle.Alert);
-            alertController.AddAction(UIAlertAction.Create("Close", UIAlertActionStyle.Cancel, null));
-            PresentViewController(alertController, true, null);
+            PresentViewController(new SecondViewController(), true, null);
         }
 
     }

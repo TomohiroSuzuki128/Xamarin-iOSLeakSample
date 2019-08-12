@@ -21,7 +21,7 @@ namespace MemoryLeakSample
         {
             Window = new UIWindow(UIScreen.MainScreen.Bounds)
             {
-                RootViewController = new MainViewController(),
+                RootViewController = new UINavigationController(new FirstViewController()),
             };
             Window.MakeKeyAndVisible();
 

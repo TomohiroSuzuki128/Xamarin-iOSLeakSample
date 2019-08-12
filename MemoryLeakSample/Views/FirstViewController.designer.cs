@@ -4,11 +4,11 @@ using UIKit;
 
 namespace MemoryLeakSample.Views
 {
-    public partial class MainViewController
+    public partial class FirstViewController
     {
         static readonly nfloat fontSize = 20f;
 
-        UIButton button;
+        UIButton nextViewButton;
 
         void InitializeUI()
         {
@@ -19,7 +19,7 @@ namespace MemoryLeakSample.Views
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth
                                     | UIViewAutoresizing.FlexibleHeight;
 
-            button = new UIButton(UIButtonType.RoundedRect)
+            nextViewButton = new UIButton(UIButtonType.RoundedRect)
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
@@ -29,18 +29,18 @@ namespace MemoryLeakSample.Views
                 LineBreakMode = UILineBreakMode.MiddleTruncation,
                 TranslatesAutoresizingMaskIntoConstraints = false,
                 Font = UIFont.SystemFontOfSize(fontSize),
-                AccessibilityIdentifier = "button",
+                AccessibilityIdentifier = "nextViewButton",
             };
 
-            button.SetTitle("アラート表示", UIControlState.Normal);
-            View.AddSubview(button);
+            nextViewButton.SetTitle("Next View", UIControlState.Normal);
+            View.AddSubview(nextViewButton);
 
-            button.HeightAnchor.ConstraintEqualTo(40f).Active = true;
-            button.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor).Active = true;
-            button.CenterYAnchor.ConstraintEqualTo(View.CenterYAnchor).Active = true;
+            nextViewButton.HeightAnchor.ConstraintEqualTo(40f).Active = true;
+            nextViewButton.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor).Active = true;
+            nextViewButton.CenterYAnchor.ConstraintEqualTo(View.CenterYAnchor).Active = true;
 
-            button.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
-            button.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
+            nextViewButton.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
+            nextViewButton.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
         }
     }
 }

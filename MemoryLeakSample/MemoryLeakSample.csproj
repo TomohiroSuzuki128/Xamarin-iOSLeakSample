@@ -67,9 +67,6 @@
         <Reference Include="System.Numerics.Vectors" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
-    </ItemGroup>
-    <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
             <Visible>false</Visible>
         </ImageAsset>
@@ -119,7 +116,6 @@
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
-        <InterfaceDefinition Include="Main.storyboard" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Info.plist" />
@@ -128,9 +124,13 @@
     <ItemGroup>
         <Compile Include="Main.cs" />
         <Compile Include="AppDelegate.cs" />
-        <Compile Include="Views\MainViewController.cs" />
-        <Compile Include="Views\MainViewController.designer.cs">
-          <DependentUpon>MainViewController.cs</DependentUpon>
+        <Compile Include="Views\FirstViewController.cs" />
+        <Compile Include="Views\FirstViewController.designer.cs">
+          <DependentUpon>FirstViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Views\SecondViewController.cs" />
+        <Compile Include="Views\SecondViewController.designer.cs">
+          <DependentUpon>SecondViewController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

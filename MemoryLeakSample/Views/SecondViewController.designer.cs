@@ -4,7 +4,7 @@ using UIKit;
 
 namespace MemoryLeakSample.Views
 {
-    public partial class MainViewController
+    public partial class SecondViewController
     {
         static readonly nfloat fontSize = 20f;
 
@@ -15,7 +15,7 @@ namespace MemoryLeakSample.Views
             View.ContentMode = UIViewContentMode.ScaleToFill;
             View.LayoutMargins = new UIEdgeInsets(0, 16, 0, 16);
             View.Frame = new CGRect(0, 0, 375, 667);
-            View.BackgroundColor = UIColor.White;
+            View.BackgroundColor = UIColor.FromRGB(224,255,224);
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth
                                     | UIViewAutoresizing.FlexibleHeight;
 
