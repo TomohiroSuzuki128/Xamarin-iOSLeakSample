@@ -8,18 +8,37 @@ namespace MemoryLeakSample.Views
     {
         static readonly nfloat fontSize = 20f;
 
-        UIButton button;
+        [Weak]
+        UIButton disiplayAlertButton;
+
+        [Weak]
+        UIButton dismissViewButton;
+
+        [Weak]
+        NSLayoutConstraint disiplayAlertButtonHeightAnchor;
+
+        [Weak]
+        NSLayoutConstraint disiplayAlertButtonCenterXAnchor;
+
+        [Weak]
+        NSLayoutConstraint disiplayAlertButtonCenterYAnchor;
+
+        [Weak]
+        NSLayoutConstraint disiplayAlertButtonLeftAnchor;
+
+        [Weak]
+        NSLayoutConstraint disiplayAlertButtonRightAnchor;
 
         void InitializeUI()
         {
             View.ContentMode = UIViewContentMode.ScaleToFill;
             View.LayoutMargins = new UIEdgeInsets(0, 16, 0, 16);
             View.Frame = new CGRect(0, 0, 375, 667);
-            View.BackgroundColor = UIColor.FromRGB(224,255,224);
+            View.BackgroundColor = UIColor.FromRGB(224, 255, 224);
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth
                                     | UIViewAutoresizing.FlexibleHeight;
 
-            button = new UIButton(UIButtonType.RoundedRect)
+            disiplayAlertButton = new DisiplayAlertButton()
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
@@ -29,18 +48,51 @@ namespace MemoryLeakSample.Views
                 LineBreakMode = UILineBreakMode.MiddleTruncation,
                 TranslatesAutoresizingMaskIntoConstraints = false,
                 Font = UIFont.SystemFontOfSize(fontSize),
-                AccessibilityIdentifier = "button",
+                //AccessibilityIdentifier = "button",
             };
 
-            button.SetTitle("アラート表示", UIControlState.Normal);
-            View.AddSubview(button);
+            disiplayAlertButton.SetTitle("Disiplay alert", UIControlState.Normal);
+            disiplayAlertButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
+            View.AddSubview(disiplayAlertButton);
 
-            button.HeightAnchor.ConstraintEqualTo(40f).Active = true;
-            button.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor).Active = true;
-            button.CenterYAnchor.ConstraintEqualTo(View.CenterYAnchor).Active = true;
+            disiplayAlertButtonHeightAnchor = disiplayAlertButton.HeightAnchor.ConstraintEqualTo(40f);
+            disiplayAlertButtonCenterXAnchor = disiplayAlertButton.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor);
+            disiplayAlertButtonCenterYAnchor = disiplayAlertButton.CenterYAnchor.ConstraintEqualTo(View.CenterYAnchor, -40);
 
-            button.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
-            button.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
+            disiplayAlertButtonLeftAnchor = disiplayAlertButton.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor);
+            disiplayAlertButtonRightAnchor = disiplayAlertButton.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor);
+
+            disiplayAlertButtonHeightAnchor.Active = true;
+            disiplayAlertButtonCenterXAnchor.Active = true;
+            disiplayAlertButtonCenterYAnchor.Active = true;
+
+            disiplayAlertButtonLeftAnchor.Active = true;
+            disiplayAlertButtonRightAnchor.Active = true;
+
+            dismissViewButton = new DismissViewButton()
+            {
+                Frame = new CGRect(0, 0, 375, 20),
+                Opaque = false,
+                ContentMode = UIViewContentMode.ScaleToFill,
+                HorizontalAlignment = UIControlContentHorizontalAlignment.Center,
+                VerticalAlignment = UIControlContentVerticalAlignment.Center,
+                LineBreakMode = UILineBreakMode.MiddleTruncation,
+                TranslatesAutoresizingMaskIntoConstraints = false,
+                Font = UIFont.SystemFontOfSize(fontSize),
+                //AccessibilityIdentifier = "dismissViewButton",
+            };
+
+            dismissViewButton.SetTitle("Close", UIControlState.Normal);
+            dismissViewButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
+            View.AddSubview(dismissViewButton);
+
+            dismissViewButton.HeightAnchor.ConstraintEqualTo(40f).Active = true;
+            dismissViewButton.CenterXAnchor.ConstraintEqualTo(View.CenterXAnchor).Active = true;
+            dismissViewButton.CenterYAnchor.ConstraintEqualTo(View.CenterYAnchor, 40).Active = true;
+
+            dismissViewButton.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
+            dismissViewButton.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
+
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
 using UIKit;
 
 namespace MemoryLeakSample.Views
 {
     public partial class FirstViewController : UIViewController
     {
+        UIViewController secondViewController;
 
         public override void ViewDidLoad()
         {
@@ -18,8 +20,16 @@ namespace MemoryLeakSample.Views
         [Export("nextViewButtonEvent:")]
         void NextViewButtonEvent(NSObject sender)
         {
-            PresentViewController(new SecondViewController(), true, null);
+            secondViewController = new SecondViewController();
+            PresentViewController(secondViewController, true, null);
         }
+
+        //[Export("NextViewClosedEvent:")]
+        //public void NextViewClosedEvent()
+        //{
+        //    secondViewController.Dispose();
+        //    secondViewController = null;
+        //}
 
     }
 }
