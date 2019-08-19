@@ -4,81 +4,58 @@ using UIKit;
 
 namespace MemoryLeakSample.Views
 {
+    [Register("SecondViewController")]
     public partial class SecondViewController : UIViewController
     {
-        UIAlertController alertController;
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
             InitializeUI();
+        }
 
-            //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
-            dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
-
-            //disiplayAlertButton.AddTarget(this, new ObjCRuntime.Selector("disiplayAlertButtonEvent:"), UIControlEvent.TouchUpInside);
-            //dismissViewButton.AddTarget(this, new ObjCRuntime.Selector("dismissViewButtonEvent:"), UIControlEvent.TouchUpInside);
+        ~SecondViewController()
+        {
+            System.Diagnostics.Debug.WriteLine("call SecondViewController finalizer.");
         }
 
         public override void ViewDidDisappear(bool animated)
         {
             base.ViewDidDisappear(animated);
-
-            //disiplayAlertButton.TouchUpInside -= DisiplayAlertButton_TouchUpInside;
-            dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
-
-            //disiplayAlertButton.RemoveTarget(this, new ObjCRuntime.Selector("disiplayAlertButtonEvent:"), UIControlEvent.TouchUpInside);
-            //dismissViewButton.RemoveTarget(this, new ObjCRuntime.Selector("dismissViewButtonEvent:"), UIControlEvent.TouchUpInside);
-
-            disiplayAlertButtonHeightAnchor.Active = false;
-            disiplayAlertButtonCenterXAnchor.Active = false;
-            disiplayAlertButtonCenterYAnchor.Active = false;
-
-            disiplayAlertButtonLeftAnchor.Active = false;
-            disiplayAlertButtonRightAnchor.Active = false;
-
-            disiplayAlertButton?.RemoveFromSuperview();
-            dismissViewButton?.RemoveFromSuperview();
-
-            disiplayAlertButton?.Dispose();
-            dismissViewButton?.Dispose();
-
-            disiplayAlertButton = null;
-            dismissViewButton = null;
         }
 
-        //[Export("disiplayAlertButtonEvent:")]
-        //void DisiplayAlertButtonEvent(NSObject sender)
-        //    => PresentAlert("Alert");
+        [Export("disiplayAlertButtonEvent:")]
+        void DisiplayAlertButtonEvent(NSObject sender)
+            => PresentAlert("Alert");
 
-        //[Export("dismissViewButtonEvent:")]
-        //void DismissViewButtonEvent(NSObject sender)
-        //    => DismissViewController(true, null);
-
-        //void DisiplayAlertButton_TouchUpInside(object sender, EventArgs e)
-        //    => PresentAlert("Alert");
-
-        void DismissViewButton_TouchUpInside(object sender, EventArgs e)
+        [Export("dismissViewButtonEvent:")]
+        void DismissViewButtonEvent(NSObject sender)
             => DismissViewController(true, () =>
             {
+                var dismissViewButton = sender as DismissViewButton;
+                dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
+                dismissViewButton.RemoveFromSuperview();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             });
 
-        //void PresentAlert(string message)
-        //{
-        //    alertController = UIAlertController.Create(string.Empty, message, UIAlertControllerStyle.Alert);
-        //    alertController.AddAction(UIAlertAction.Create("Close", UIAlertActionStyle.Cancel, null));
-        //    PresentViewController(alertController, true, null);
-        //}
+        void DisiplayAlertButton_TouchUpInside(object sender, EventArgs e)
+            => PresentAlert("Alert");
 
-        protected override void Dispose(bool disposing)
+        void DismissViewButton_TouchUpInside(object sender, EventArgs e)
+            => DismissViewController(true, () =>
+            {
+                var dismissViewButton = sender as DismissViewButton;
+                dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
+                dismissViewButton.RemoveFromSuperview();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            });
+
+        void PresentAlert(string message)
         {
-            base.Dispose(disposing);
-
-            disiplayAlertButton = null;
-            dismissViewButton = null;
+            var alertController = UIAlertController.Create(string.Empty, message, UIAlertControllerStyle.Alert);
+            alertController.AddAction(UIAlertAction.Create("Close", UIAlertActionStyle.Cancel, null));
+            PresentViewController(alertController, true, null);
         }
 
     }

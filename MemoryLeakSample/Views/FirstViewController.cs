@@ -4,6 +4,7 @@ using UIKit;
 
 namespace MemoryLeakSample.Views
 {
+    [Register("FirstViewController")]
     public partial class FirstViewController : UIViewController
     {
         UIViewController secondViewController;
@@ -14,11 +15,11 @@ namespace MemoryLeakSample.Views
 
             InitializeUI();
 
-            nextViewButton.AddTarget(this, new ObjCRuntime.Selector("nextViewButtonEvent:"), UIControlEvent.TouchUpInside);
+            nextViewButton.AddTarget(this, new ObjCRuntime.Selector("nextViewButtonEvent"), UIControlEvent.TouchUpInside);
         }
 
-        [Export("nextViewButtonEvent:")]
-        void NextViewButtonEvent(NSObject sender)
+        [Export("nextViewButtonEvent")]
+        void NextViewButtonEvent()
         {
             secondViewController = new SecondViewController();
             PresentViewController(secondViewController, true, null);
