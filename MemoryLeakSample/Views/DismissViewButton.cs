@@ -7,7 +7,7 @@ namespace MemoryLeakSample.Views
     {
         public DismissViewButton()
         {
-            System.Diagnostics.Debug.WriteLine("call DismissViewButton ctor.");
+            System.Diagnostics.Debug.WriteLine("Created DismissViewButton");
         }
 
         public DismissViewButton(UIButtonType type) : base(type) { }
@@ -16,12 +16,12 @@ namespace MemoryLeakSample.Views
         {
             base.Dispose(disposing);
 
-            System.Diagnostics.Debug.WriteLine("call DismissViewButton dispose.");
+            System.Diagnostics.Debug.WriteLine("Disposed DismissViewButton");
         }
 
         ~DismissViewButton()
         {
-            System.Diagnostics.Debug.WriteLine("call DismissViewButton finalizer.");
+            System.Diagnostics.Debug.WriteLine("Finalized DismissViewButton");
         }
     }
 }

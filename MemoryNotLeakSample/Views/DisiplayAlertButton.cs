@@ -7,21 +7,21 @@ namespace MemoryNotLeakSample.Views
     {
         public DisiplayAlertButton()
         {
-            System.Diagnostics.Debug.WriteLine("call DisiplayAlertButton ctor.");
+            System.Diagnostics.Debug.WriteLine("Created DisiplayAlertButton ctor.");
         }
 
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
 
-            System.Diagnostics.Debug.WriteLine("call DisiplayAlertButton dispose.");
+            System.Diagnostics.Debug.WriteLine("Disposed DisiplayAlertButton dispose.");
         }
 
         public DisiplayAlertButton(UIButtonType type) : base(type) { }
 
         ~DisiplayAlertButton()
         {
-            System.Diagnostics.Debug.WriteLine("call DisiplayAlertButton finalizer.");
+            System.Diagnostics.Debug.WriteLine("Finalized DisiplayAlertButton finalizer.");
         }
     }
 }

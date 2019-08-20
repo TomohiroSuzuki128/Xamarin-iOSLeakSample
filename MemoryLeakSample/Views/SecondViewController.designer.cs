@@ -8,6 +8,9 @@ namespace MemoryLeakSample.Views
     {
         static readonly nfloat fontSize = 20f;
 
+        UIButton disiplayAlertButton;
+        UIButton dismissViewButton;
+
         void InitializeUI()
         {
             View.ContentMode = UIViewContentMode.ScaleToFill;
@@ -17,7 +20,7 @@ namespace MemoryLeakSample.Views
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth
                                     | UIViewAutoresizing.FlexibleHeight;
 
-            var disiplayAlertButton = new DisiplayAlertButton()
+            disiplayAlertButton = new DisiplayAlertButton()
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
@@ -46,7 +49,7 @@ namespace MemoryLeakSample.Views
             disiplayAlertButton.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
             disiplayAlertButton.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
 
-            var dismissViewButton = new DismissViewButton()
+            dismissViewButton = new DismissViewButton()
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
