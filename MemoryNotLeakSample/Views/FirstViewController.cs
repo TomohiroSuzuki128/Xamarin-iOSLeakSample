@@ -2,7 +2,7 @@
 using Foundation;
 using UIKit;
 
-namespace MemoryLeakSample.Views
+namespace MemoryNotLeakSample.Views
 {
     [Register("FirstViewController")]
     public partial class FirstViewController : UIViewController
@@ -24,8 +24,16 @@ namespace MemoryLeakSample.Views
             System.Diagnostics.Debug.WriteLine("---------------------------------");
             secondViewController = new SecondViewController();
             PresentViewController(secondViewController, true, null);
+            Counter.Default.CountUp();
             System.Diagnostics.Debug.WriteLine("---Open SecondView------------------------------");
         }
+
+        //[Export("NextViewClosedEvent:")]
+        //public void NextViewClosedEvent()
+        //{
+        //    secondViewController.Dispose();
+        //    secondViewController = null;
+        //}
 
     }
 }

@@ -2,7 +2,7 @@
 using Foundation;
 using UIKit;
 
-namespace MemoryLeakSample.Views
+namespace MemoryNotLeakSample.Views
 {
     [Register("SecondViewController")]
     public partial class SecondViewController : UIViewController
@@ -13,9 +13,6 @@ namespace MemoryLeakSample.Views
         {
             base.ViewDidLoad();
             InitializeUI();
-
-            disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
-            dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
         }
 
         protected override void Dispose(bool disposing)
@@ -34,7 +31,7 @@ namespace MemoryLeakSample.Views
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
-            System.Diagnostics.Debug.WriteLine("Finalized SecondViewController");
+            System.Diagnostics.Debug.WriteLine($"Finalized SecondViewController {count}");
         }
 
         public override void ViewDidDisappear(bool animated)
@@ -50,11 +47,14 @@ namespace MemoryLeakSample.Views
         void DismissViewButtonEvent(NSObject sender)
             => DismissViewController(true, () =>
             {
+                //dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
+                //disiplayAlertButton.TouchUpInside -= DisiplayAlertButton_TouchUpInside;
+                dismissViewButton?.RemoveFromSuperview();
+                disiplayAlertButton?.RemoveFromSuperview();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 GC.Collect();
                 System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
-
             });
 
         void DisiplayAlertButton_TouchUpInside(object sender, EventArgs e)
@@ -63,6 +63,10 @@ namespace MemoryLeakSample.Views
         void DismissViewButton_TouchUpInside(object sender, EventArgs e)
             => DismissViewController(true, () =>
             {
+                //dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
+                //disiplayAlertButton.TouchUpInside -= DisiplayAlertButton_TouchUpInside;
+                dismissViewButton?.RemoveFromSuperview();
+                disiplayAlertButton?.RemoveFromSuperview();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 GC.Collect();

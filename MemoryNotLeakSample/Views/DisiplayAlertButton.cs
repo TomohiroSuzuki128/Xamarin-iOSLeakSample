@@ -1,7 +1,7 @@
 ﻿using System;
 using UIKit;
 
-namespace MemoryLeakSample.Views
+namespace MemoryNotLeakSample.Views
 {
     public class DisiplayAlertButton : UIButton
     {
@@ -24,7 +24,6 @@ namespace MemoryLeakSample.Views
         ~DisiplayAlertButton()
         {
             System.Diagnostics.Debug.WriteLine($"Finalized DisiplayAlertButton {count}");
-            ");
         }
     }
 }

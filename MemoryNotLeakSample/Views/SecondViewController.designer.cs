@@ -2,7 +2,7 @@
 using CoreGraphics;
 using UIKit;
 
-namespace MemoryLeakSample.Views
+namespace MemoryNotLeakSample.Views
 {
     public partial class SecondViewController
     {
@@ -20,7 +20,7 @@ namespace MemoryLeakSample.Views
             View.AutoresizingMask = UIViewAutoresizing.FlexibleWidth
                                     | UIViewAutoresizing.FlexibleHeight;
 
-            disiplayAlertButton = new DisiplayAlertButton()
+            var disiplayAlertButton = new DisiplayAlertButton()
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
@@ -36,6 +36,9 @@ namespace MemoryLeakSample.Views
             disiplayAlertButton.SetTitle("Disiplay alert", UIControlState.Normal);
             disiplayAlertButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
 
+            //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
+            disiplayAlertButton.AddTarget(this, new ObjCRuntime.Selector("disiplayAlertButtonEvent:"), UIControlEvent.TouchUpInside);
+
             View.AddSubview(disiplayAlertButton);
 
             disiplayAlertButton.HeightAnchor.ConstraintEqualTo(40f).Active = true;
@@ -45,7 +48,7 @@ namespace MemoryLeakSample.Views
             disiplayAlertButton.LeftAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.LeftAnchor).Active = true;
             disiplayAlertButton.RightAnchor.ConstraintEqualTo(View.LayoutMarginsGuide.RightAnchor).Active = true;
 
-            dismissViewButton = new DismissViewButton()
+            var dismissViewButton = new DismissViewButton()
             {
                 Frame = new CGRect(0, 0, 375, 20),
                 Opaque = false,
@@ -60,6 +63,9 @@ namespace MemoryLeakSample.Views
 
             dismissViewButton.SetTitle("Close", UIControlState.Normal);
             dismissViewButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
+
+            //dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
+            dismissViewButton.AddTarget(this, new ObjCRuntime.Selector("dismissViewButtonEvent:"), UIControlEvent.TouchUpInside);
 
             View.AddSubview(dismissViewButton);
 

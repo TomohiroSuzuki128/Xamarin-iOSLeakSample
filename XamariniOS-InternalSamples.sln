@@ -1,23 +1,40 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryLeakSample", "MemoryLeakSample\MemoryLeakSample.csproj", "{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryNotLeakSample", "MemoryNotLeakSample\MemoryNotLeakSample.csproj", "{852B0AED-4600-4739-8C35-4E0258FBBDA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|iPhoneSimulator = Debug|iPhoneSimulator
-		Release|iPhoneSimulator = Release|iPhoneSimulator
 		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
 		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhone.Build.0 = Debug|iPhone
+		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhone.ActiveCfg = Release|iPhone
 		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhone.Build.0 = Release|iPhone
+		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{09E19D8A-12BB-4A4B-A63D-785B862A3FD6}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Debug|iPhone.Build.0 = Debug|iPhone
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhone.ActiveCfg = Release|iPhone
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhone.Build.0 = Release|iPhone
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ED80792-BB35-4365-AD6A-D226F15B8726}
 	EndGlobalSection
 EndGlobal
