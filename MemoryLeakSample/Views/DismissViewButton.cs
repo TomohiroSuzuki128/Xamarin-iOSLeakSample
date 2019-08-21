@@ -5,6 +5,8 @@ namespace MemoryLeakSample.Views
 {
     public class DismissViewButton : UIButton
     {
+        int count = Counter.Default.Count;
+
         public DismissViewButton()
         {
             System.Diagnostics.Debug.WriteLine("Created DismissViewButton");

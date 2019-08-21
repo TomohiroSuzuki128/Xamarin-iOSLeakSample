@@ -5,9 +5,11 @@ namespace MemoryNotLeakSample.Views
 {
     public class DismissViewButton : UIButton
     {
+        int count = Counter.Default.Count;
+
         public DismissViewButton()
         {
-            System.Diagnostics.Debug.WriteLine("Created DismissViewButton ctor.");
+            System.Diagnostics.Debug.WriteLine($"Created DismissViewButton {count}");
         }
 
         public DismissViewButton(UIButtonType type) : base(type) { }
@@ -16,12 +18,12 @@ namespace MemoryNotLeakSample.Views
         {
             base.Dispose(disposing);
 
-            System.Diagnostics.Debug.WriteLine("Disposed DismissViewButton dispose.");
+            System.Diagnostics.Debug.WriteLine($"Disposed DismissViewButton {count}");
         }
 
         ~DismissViewButton()
         {
-            System.Diagnostics.Debug.WriteLine("Finalized DismissViewButton finalizer.");
+            System.Diagnostics.Debug.WriteLine($"Finalized DismissViewButton {count}");
         }
     }
 }

@@ -8,6 +8,9 @@ namespace MemoryNotLeakSample.Views
     {
         static readonly nfloat fontSize = 20f;
 
+        UIButton disiplayAlertButton;
+        UIButton dismissViewButton;
+
         void InitializeUI()
         {
             View.ContentMode = UIViewContentMode.ScaleToFill;
@@ -35,7 +38,6 @@ namespace MemoryNotLeakSample.Views
 
             //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
             disiplayAlertButton.AddTarget(this, new ObjCRuntime.Selector("disiplayAlertButtonEvent:"), UIControlEvent.TouchUpInside);
-
 
             View.AddSubview(disiplayAlertButton);
 

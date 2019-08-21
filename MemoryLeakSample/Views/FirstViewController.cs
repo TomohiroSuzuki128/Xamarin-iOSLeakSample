@@ -7,7 +7,7 @@ namespace MemoryLeakSample.Views
     [Register("FirstViewController")]
     public partial class FirstViewController : UIViewController
     {
-        UIViewController secondViewController;
+        [Weak] UIViewController secondViewController;
 
         public override void ViewDidLoad()
         {
@@ -21,16 +21,11 @@ namespace MemoryLeakSample.Views
         [Export("nextViewButtonEvent")]
         void NextViewButtonEvent()
         {
+            System.Diagnostics.Debug.WriteLine("---------------------------------");
             secondViewController = new SecondViewController();
             PresentViewController(secondViewController, true, null);
+            System.Diagnostics.Debug.WriteLine("---Open SecondView------------------------------");
         }
-
-        //[Export("NextViewClosedEvent:")]
-        //public void NextViewClosedEvent()
-        //{
-        //    secondViewController.Dispose();
-        //    secondViewController = null;
-        //}
 
     }
 }

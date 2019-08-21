@@ -7,15 +7,34 @@ namespace MemoryLeakSample.Views
     [Register("SecondViewController")]
     public partial class SecondViewController : UIViewController
     {
+        int count = Counter.Default.Count;
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             InitializeUI();
+
+            disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
+            dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            System.Diagnostics.Debug.WriteLine($"Disposed SecondViewController {count}");
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
 
         ~SecondViewController()
         {
-            System.Diagnostics.Debug.WriteLine("call SecondViewController finalizer.");
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            System.Diagnostics.Debug.WriteLine("Finalized SecondViewController");
         }
 
         public override void ViewDidDisappear(bool animated)
@@ -31,11 +50,11 @@ namespace MemoryLeakSample.Views
         void DismissViewButtonEvent(NSObject sender)
             => DismissViewController(true, () =>
             {
-                var dismissViewButton = sender as DismissViewButton;
-                dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
-                dismissViewButton.RemoveFromSuperview();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
+                GC.Collect();
+                System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
+
             });
 
         void DisiplayAlertButton_TouchUpInside(object sender, EventArgs e)
@@ -44,11 +63,10 @@ namespace MemoryLeakSample.Views
         void DismissViewButton_TouchUpInside(object sender, EventArgs e)
             => DismissViewController(true, () =>
             {
-                var dismissViewButton = sender as DismissViewButton;
-                dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
-                dismissViewButton.RemoveFromSuperview();
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
+                GC.Collect();
+                System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
             });
 
         void PresentAlert(string message)

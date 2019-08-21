@@ -36,10 +36,6 @@ namespace MemoryLeakSample.Views
             disiplayAlertButton.SetTitle("Disiplay alert", UIControlState.Normal);
             disiplayAlertButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
 
-            //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
-            disiplayAlertButton.AddTarget(this, new ObjCRuntime.Selector("disiplayAlertButtonEvent:"), UIControlEvent.TouchUpInside);
-
-
             View.AddSubview(disiplayAlertButton);
 
             disiplayAlertButton.HeightAnchor.ConstraintEqualTo(40f).Active = true;
@@ -64,9 +60,6 @@ namespace MemoryLeakSample.Views
 
             dismissViewButton.SetTitle("Close", UIControlState.Normal);
             dismissViewButton.SetTitleColor(UIColor.Blue, UIControlState.Normal);
-
-            //dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
-            dismissViewButton.AddTarget(this, new ObjCRuntime.Selector("dismissViewButtonEvent:"), UIControlEvent.TouchUpInside);
 
             View.AddSubview(dismissViewButton);
 

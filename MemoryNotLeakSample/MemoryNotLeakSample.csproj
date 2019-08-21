@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Views\DismissViewButton.cs" />
     <Compile Include="Views\DisiplayAlertButton.cs" />
+    <Compile Include="Counter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
