@@ -14,8 +14,25 @@ namespace MemoryLeakSample.Views
             base.ViewDidLoad();
             InitializeUI();
 
-            disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
-            dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
+            //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
+            //dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
+
+            disiplayAlertButton.TouchUpInside += (s, e) =>
+            {
+                PresentAlert("Alert");
+            };
+
+            dismissViewButton.TouchUpInside += (s, e) =>
+            {
+                DismissViewController(true, () =>
+                {
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+                    System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
+                });
+            };
+
         }
 
         protected override void Dispose(bool disposing)

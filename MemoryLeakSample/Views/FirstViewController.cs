@@ -24,6 +24,7 @@ namespace MemoryLeakSample.Views
             System.Diagnostics.Debug.WriteLine("---------------------------------");
             secondViewController = new SecondViewController();
             PresentViewController(secondViewController, true, null);
+            Counter.Default.CountUp();
             System.Diagnostics.Debug.WriteLine("---Open SecondView------------------------------");
         }
 

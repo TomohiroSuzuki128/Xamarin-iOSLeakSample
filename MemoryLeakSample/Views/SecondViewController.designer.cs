@@ -8,7 +8,10 @@ namespace MemoryLeakSample.Views
     {
         static readonly nfloat fontSize = 20f;
 
+        //[Weak]
         UIButton disiplayAlertButton;
+
+        //[Weak]
         UIButton dismissViewButton;
 
         void InitializeUI()
