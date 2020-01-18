@@ -32,7 +32,6 @@ namespace MemoryLeakSample.Views
                     System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
                 });
             };
-
         }
 
         protected override void Dispose(bool disposing)
@@ -58,33 +57,6 @@ namespace MemoryLeakSample.Views
         {
             base.ViewDidDisappear(animated);
         }
-
-        [Export("disiplayAlertButtonEvent:")]
-        void DisiplayAlertButtonEvent(NSObject sender)
-            => PresentAlert("Alert");
-
-        [Export("dismissViewButtonEvent:")]
-        void DismissViewButtonEvent(NSObject sender)
-            => DismissViewController(true, () =>
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
-
-            });
-
-        void DisiplayAlertButton_TouchUpInside(object sender, EventArgs e)
-            => PresentAlert("Alert");
-
-        void DismissViewButton_TouchUpInside(object sender, EventArgs e)
-            => DismissViewController(true, () =>
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                System.Diagnostics.Debug.WriteLine("---Close SecondView------------------------------");
-            });
 
         void PresentAlert(string message)
         {
