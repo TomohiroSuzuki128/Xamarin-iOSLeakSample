@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryLeakSample", "MemoryL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryNotLeakSample", "MemoryNotLeakSample\MemoryNotLeakSample.csproj", "{852B0AED-4600-4739-8C35-4E0258FBBDA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepDive05", "DeepDive05\DeepDive05.csproj", "{0354F8CD-9587-475B-8504-19C245D99796}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhone = Debug|iPhone
@@ -30,6 +32,14 @@ Global
 		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhone.Build.0 = Release|iPhone
 		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{852B0AED-4600-4739-8C35-4E0258FBBDA0}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{0354F8CD-9587-475B-8504-19C245D99796}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{0354F8CD-9587-475B-8504-19C245D99796}.Debug|iPhone.Build.0 = Debug|iPhone
+		{0354F8CD-9587-475B-8504-19C245D99796}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{0354F8CD-9587-475B-8504-19C245D99796}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{0354F8CD-9587-475B-8504-19C245D99796}.Release|iPhone.ActiveCfg = Release|iPhone
+		{0354F8CD-9587-475B-8504-19C245D99796}.Release|iPhone.Build.0 = Release|iPhone
+		{0354F8CD-9587-475B-8504-19C245D99796}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{0354F8CD-9587-475B-8504-19C245D99796}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
