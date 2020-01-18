@@ -24,7 +24,6 @@ namespace MemoryLeakSample.Views
         ~DisiplayAlertButton()
         {
             System.Diagnostics.Debug.WriteLine($"Finalized DisiplayAlertButton {count}");
-            ");
         }
     }
 }
