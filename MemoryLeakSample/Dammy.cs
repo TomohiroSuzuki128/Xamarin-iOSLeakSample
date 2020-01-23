@@ -8,7 +8,7 @@ using UIKit;
 
 namespace MemoryLeakSample
 {
-    public class DammyViewCOntroller : UIViewController
+    public class DammyViewController : UIViewController
     {
         public override void ViewDidLoad()
         {
