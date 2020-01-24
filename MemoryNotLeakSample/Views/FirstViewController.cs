@@ -28,13 +28,5 @@ namespace MemoryNotLeakSample.Views
             System.Diagnostics.Debug.WriteLine("---Open SecondView------------------------------");
         }
 
-        //[Export("NextViewClosedEvent:")]
-        //public void NextViewClosedEvent()
-        //{
-        //    secondViewController.Dispose();
-        //    secondViewController = null;
-        //}
-
     }
 }
-
