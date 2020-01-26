@@ -47,8 +47,6 @@ namespace MemoryNotLeakSample.Views
         void DismissViewButtonEvent(NSObject sender)
             => DismissViewController(true, () =>
             {
-                //dismissViewButton.TouchUpInside -= DismissViewButton_TouchUpInside;
-                //disiplayAlertButton.TouchUpInside -= DisiplayAlertButton_TouchUpInside;
                 dismissViewButton?.RemoveFromSuperview();
                 disiplayAlertButton?.RemoveFromSuperview();
                 GC.Collect();
