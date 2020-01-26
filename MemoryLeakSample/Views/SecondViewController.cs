@@ -14,9 +14,6 @@ namespace MemoryLeakSample.Views
             base.ViewDidLoad();
             InitializeUI();
 
-            //disiplayAlertButton.TouchUpInside += DisiplayAlertButton_TouchUpInside;
-            //dismissViewButton.TouchUpInside += DismissViewButton_TouchUpInside;
-
             disiplayAlertButton.TouchUpInside += (s, e) =>
             {
                 PresentAlert("Alert");
@@ -51,11 +48,6 @@ namespace MemoryLeakSample.Views
             GC.WaitForPendingFinalizers();
             GC.Collect();
             System.Diagnostics.Debug.WriteLine("Finalized SecondViewController");
-        }
-
-        public override void ViewDidDisappear(bool animated)
-        {
-            base.ViewDidDisappear(animated);
         }
 
         void PresentAlert(string message)
