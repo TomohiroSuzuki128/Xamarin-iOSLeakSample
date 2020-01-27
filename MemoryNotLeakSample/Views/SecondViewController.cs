@@ -34,11 +34,6 @@ namespace MemoryNotLeakSample.Views
             System.Diagnostics.Debug.WriteLine($"Finalized SecondViewController {count}");
         }
 
-        public override void ViewDidDisappear(bool animated)
-        {
-            base.ViewDidDisappear(animated);
-        }
-
         [Export("disiplayAlertButtonEvent:")]
         void DisiplayAlertButtonEvent(NSObject sender)
             => PresentAlert("Alert");
