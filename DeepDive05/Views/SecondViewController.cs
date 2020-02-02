@@ -46,7 +46,7 @@ namespace DeepDive05.Views
 
             button?.RemoveFromSuperview();
 
-            button.Dispose();
+            button?.Dispose();
         }
 
         [Export("dismissViewButtonEvent:")]
